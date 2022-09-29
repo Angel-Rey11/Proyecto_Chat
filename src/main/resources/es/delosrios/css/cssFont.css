@@ -1,4 +1,13 @@
+.Button :hover{
+    -fx-border-color: red;
+    -fx-background-radius: 10px;
+}
+
 .label {
      -fx-text-fill: white;
      -fx-font-family: Arial;
+}
+
+.button {
+	-fx-cursor: hand;
 }

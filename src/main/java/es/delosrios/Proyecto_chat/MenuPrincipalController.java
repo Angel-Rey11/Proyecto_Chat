@@ -3,7 +3,7 @@ package es.delosrios.Proyecto_chat;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
-public class PrimaryController {
+public class MenuPrincipalController {
 
     @FXML
     private void switchToSecondary() throws IOException {

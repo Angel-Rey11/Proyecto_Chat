@@ -8,11 +8,10 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.image.ImageView;
 
 public class MenuPrincipalController {
-	
-
+    
     @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+    private void switchToSalas()  throws IOException {
+    	App.setRoot("Salas");
     }
     
 }

@@ -6,26 +6,26 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="700.0" stylesheets="@../css/cssFont.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="520.0" prefWidth="133.0" style="-fx-background-color: #CED3CF;">
+      <AnchorPane prefHeight="520.0" prefWidth="133.0" style="-fx-background-color: #33353c;">
          <children>
-            <ImageView fitHeight="51.0" fitWidth="70.0" layoutX="38.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="salas" fitHeight="36.0" fitWidth="35.0" layoutX="48.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/people.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="51.0" fitWidth="70.0" layoutX="41.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="crear" fitHeight="35.0" fitWidth="44.0" layoutX="48.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/add.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="42.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="not" fitHeight="35.0" fitWidth="35.0" layoutX="48.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/notification.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="35.0" fitWidth="45.0" layoutX="46.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="more" fitHeight="35.0" fitWidth="35.0" layoutX="46.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/more.png" />
                </image>
@@ -34,7 +34,11 @@
             <Label layoutX="20.0" layoutY="65.0" style="-fx-font-size: 14px;" text="Notificaciones" />
             <Label layoutX="35.0" layoutY="160.0" style="-fx-font-size: 14px;" text="Mis Salas" />
             <Label layoutX="33.0" layoutY="260.0" style="-fx-font-size: 14px;" text="Crear Sala" />
-            <Separator layoutX="130.0" orientation="VERTICAL" prefHeight="520.0" prefWidth="0.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="131.0" prefHeight="71.0" prefWidth="569.0" style="-fx-background-color: #33353c;">
+         <children>
+            <Label layoutX="22.0" layoutY="13.0" style="-fx-font-size: 30px;" text="INICIO" />
          </children>
       </AnchorPane>
    </children>

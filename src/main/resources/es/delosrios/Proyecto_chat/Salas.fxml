@@ -13,17 +13,17 @@
          <children>
             <ImageView id="crear" fitHeight="35.0" fitWidth="44.0" layoutX="48.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/add.png" />
+                  <Image url="@../Images/people%20(1).png" />
                </image>
             </ImageView>
             <ImageView id="not" fitHeight="29.0" fitWidth="41.0" layoutX="49.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/notification.png" />
+                  <Image url="@../Images/comment.png" />
                </image>
             </ImageView>
             <ImageView id="more" fitHeight="35.0" fitWidth="35.0" layoutX="46.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/more.png" />
+                  <Image url="@../Images/more%20(1).png" />
                </image>
             </ImageView>
             <Separator layoutX="29.0" layoutY="308.0" prefHeight="0.0" prefWidth="69.0" />

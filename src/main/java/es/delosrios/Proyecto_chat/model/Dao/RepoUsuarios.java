@@ -10,35 +10,36 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import es.delosrios.Proyecto_chat.model.DataObject.Message;
+import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
 
-public class RepoChat {
-	
-	public static void save(Message m, String file) throws IOException, JAXBException {
+public class RepoUsuarios {
+
+	public static void save(Usuario usu, String file) throws IOException, JAXBException {
 		JAXBContext context;
 		BufferedWriter bfr;
 		
 		bfr = new BufferedWriter(new FileWriter(file));
-		context = JAXBContext.newInstance(Message.class);
+		context = JAXBContext.newInstance(Usuario.class);
 		
 		Marshaller ms = context.createMarshaller();
 		ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		ms.marshal(m, bfr);
+		ms.marshal(usu, bfr);
 		bfr.close();
 	}
 	
-	public static Message load(String file) {
-		Message result = null;
+	public static Usuario load(String file) {
+		Usuario result = null;
 		
 		try {
-			JAXBContext context = JAXBContext.newInstance(Message.class);
+			JAXBContext context = JAXBContext.newInstance(Usuario.class);
 			Unmarshaller um = context.createUnmarshaller();
-			result = (Message) um.unmarshal(new File(file));
+			result = (Usuario) um.unmarshal(new File(file));
 			
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return result;
 	}
 }

@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 import es.delosrios.Proyecto_chat.Interfaces.ISala;
-import es.delosrios.Proyecto_chat.model.Dao.XmlAccessorType;
-import es.delosrios.Proyecto_chat.model.Dao.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Sala")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -69,10 +71,12 @@ public class Sala implements ISala, Serializable {
 
 	@Override
 	public void setAllMessagges(List<Message> allMessagges) {
+		this.AllMessagges = allMessagges;
 	}
 
 	@Override
 	public void setAllUsers(List<Usuario> allUsers) {
+		this.AllUsers = allUsers;
 	}
 	
 	public boolean equals(Object obj) {

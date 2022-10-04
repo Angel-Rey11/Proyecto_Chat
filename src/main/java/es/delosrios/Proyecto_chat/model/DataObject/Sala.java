@@ -39,6 +39,12 @@ public class Sala implements ISala, Serializable {
 		this.AllUsers = AllUsers;
 	}
 	
+	public Sala(String nombre, String descr) {
+		super();
+		Nombre = nombre;
+		Descr = descr;
+	}
+
 	@Override
 	public String getNombre() {
 		return Nombre;
@@ -96,4 +102,12 @@ public class Sala implements ISala, Serializable {
 		}	
 		return valid;
 	}
+
+	@Override
+	public String toString() {
+		return "Sala [Nombre=" + Nombre + ", Descr=" + Descr + ", AllMessagges=" + AllMessagges + ", AllUsers="
+				+ AllUsers + "]";
+	}
+	
+	
 }

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="720.0" stylesheets="@../css/cssFont.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.delosrios.Proyecto_chat.SalasController">
    <children>
@@ -44,8 +49,29 @@
       <AnchorPane layoutX="133.0" prefHeight="61.0" prefWidth="590.0" style="-fx-background-color: #33353c;">
          <children>
             <Label layoutX="14.0" layoutY="13.0" prefHeight="36.0" prefWidth="170.0" style="-fx-font-size: 30px;" text="MIS SALAS" />
+            <Button layoutX="431.0" layoutY="12.0" mnemonicParsing="false" onAction="#showDialog" style="-fx-background-color: #243962; -fx-background-radius: 20px; -fx-border-color: skyblue; -fx-border-radius: 20px; -fx-font-size: 16px;" text="UNIRSE A SALA" textFill="#fffdfd" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="133.0" layoutY="61.0" prefHeight="489.0" prefWidth="590.0" style="-fx-background-color: #2c2723;" />
+      <AnchorPane layoutX="133.0" layoutY="61.0" prefHeight="489.0" prefWidth="590.0" style="-fx-background-color: #2c2723;">
+         <children>
+            <TableView layoutX="28.0" layoutY="19.0" prefHeight="446.0" prefWidth="535.0" style="-fx-background-color: #243962; -fx-background-radius: 20px; -fx-border-radius: 20px;">
+              <columns>
+                <TableColumn prefWidth="173.3333282470703" text="NOMBRE" />
+                <TableColumn prefWidth="263.9999694824219" text="DESCRIPCION" />
+                  <TableColumn prefWidth="96.0" text="USUARIOS" />
+              </columns>
+            </TableView>
+            <DialogPane fx:id="dialog" layoutX="186.0" layoutY="-10.0" prefHeight="91.0" prefWidth="315.0" style="-fx-background-color: #2c2723; -fx-border-color: skyblue; -fx-background-radius: 20px; -fx-border-radius: 20px;" visible="false">
+               <header>
+                  <AnchorPane prefHeight="78.0" prefWidth="313.0" style="-fx-background-color: #2c2723; -fx-background-radius: 20px; -fx-border-color: skyblue; -fx-border-radius: 20px;">
+                     <children>
+                        <Label layoutX="14.0" layoutY="15.0" style="-fx-font-size: 16px;" text="¿A que sala quieres unirte?" />
+                        <ChoiceBox fx:id="cb" layoutX="14.0" layoutY="44.0" prefHeight="21.0" prefWidth="239.0" />
+                        <Circle fill="#2eff1f" layoutX="277.0" layoutY="56.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Button layoutX="259.0" layoutY="43.0" mnemonicParsing="false" onAction="#switchToChat" opacity="0.0" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #2c2723;" text="Button" />
+                     </children>
+                  </AnchorPane>
+               </header></DialogPane>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

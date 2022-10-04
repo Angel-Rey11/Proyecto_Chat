@@ -27,10 +27,10 @@ public class RepoSala implements IRepoSala, Serializable {
 	
 	private List<Sala> list;
 	
-	private RepoSala() {
+	public RepoSala() {
 		list = new ArrayList<Sala>();
 	}
-	
+
 	public boolean addSala(Sala s) {
 		boolean added = false;
 		

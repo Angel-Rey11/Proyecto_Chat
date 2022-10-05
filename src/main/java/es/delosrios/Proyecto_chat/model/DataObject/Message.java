@@ -1,5 +1,6 @@
 package es.delosrios.Proyecto_chat.model.DataObject;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,8 +9,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "message")
-public class Message {
+@XmlRootElement(name = "messages")
+public class Message implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	private String nickName;
 	private LocalDateTime time;

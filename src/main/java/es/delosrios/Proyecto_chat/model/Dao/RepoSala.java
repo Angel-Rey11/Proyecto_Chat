@@ -28,13 +28,23 @@ public class RepoSala implements IRepoSala, Serializable {
 	@XmlTransient
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Lista de salas
+	 */
 	@XmlElement(name="Sala")
 	private List<Sala> list;
 	
+	/**
+	 * Inicializar lista de salas
+	 */
 	public RepoSala() {
 		list = new ArrayList<Sala>();
 	}
 
+	/**
+	 * Método para añadir sala
+	 * @param s Sala que se va a añadir
+	 */
 	public boolean addSala(Sala s) {
 		boolean added = false;
 		if (!list.contains(s)) {
@@ -44,51 +54,62 @@ public class RepoSala implements IRepoSala, Serializable {
 		return added;
 	}
 	
-	public boolean removeSala(String name) {
+	/**
+	 * Método para eliminar sala
+	 * @param s Sala a eliminar
+	 * @return Si la sala ha sido borrada
+	 */
+	public boolean removeSala(Sala s) {
 		boolean removed = false;
 		
-		if (!list.isEmpty()) {
-			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getNombre().equals(name)) {
-					list.remove(i);
-				}
-			}
+		if(list.contains(s)) {
+			list.remove(s);
+			removed = true;
 		}
 		return removed;
 	}
 	
-	public void modifyName(String name, String newName) {
-		if (!list.isEmpty()) {
-			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getNombre().equals(name)) {
-					list.get(i).setNombre(newName);
-				}
-			}
+	/**
+	 * Método para modificar el nombre de la sala
+	 * @param s Sala a modificar
+	 * @param name Nombre que se va a añadir
+	 */
+	public void modifyName(Sala s, String name) {
+		if(list.contains(s)) {
+			s.setNombre(name);
 		}
 	}
 	
-	public void modifyDescr(String name, String descr) {
-		if (!list.isEmpty()) {
-			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getNombre().equals(name)) {
-					list.get(i).setDescr(descr);
-				}
-			}
+	/**
+	 * Método para modificar la descripción de la sala
+	 * @param s Sala a modificar
+	 * @param desc Descripción que se va a añadir
+	 */
+	public void modifyDescr(Sala s, String desc) {
+		if(list.contains(s)) {
+			s.setDescr(desc);
 		}
 	}
 	
-	public Sala searchSala(String name) {
-		Sala s = null;
-		if (!list.isEmpty()) {
-			for (int i = 0; i < list.size(); i++) {
-				if (list.get(i).getNombre().equals(name)) {
-					s = list.get(i);
-				}
+	/**
+	 * Método para buscar una sala
+	 * @param s Sala que se va a buscar
+	 * @return Sala encontrada
+	 */
+	public Sala searchSala(Sala s) {
+		Sala sala = null;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getNombre().equals(s.getNombre())) {
+				sala = list.get(i);
 			}
 		}
-		return s;
+		return sala;
 	}
 	
+	/**
+	 * Método para añadir contenido al fichero XML
+	 * @param file Nombre del archivo
+	 */
 	public void marshall(String file) {
 		JAXBContext contexto;
 		BufferedWriter bfr;
@@ -121,6 +142,9 @@ public class RepoSala implements IRepoSala, Serializable {
 		return newReposala;
 	}
 
+	/**
+	 * Método para mostrar la lista de salas
+	 */
 	@Override
 	public String toString() {
 		return "RepoSala [list=" + list + "]";

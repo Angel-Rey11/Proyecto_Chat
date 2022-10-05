@@ -106,19 +106,21 @@ public class RepoSala implements IRepoSala, Serializable {
 		}
 	}
 	
-	public RepoSala unmarshall(String file) {
+	public List<Sala> unmarshall(String file) {
 		JAXBContext contexto;
 		RepoSala newReposala = null;
+		List<Sala> misSalas = new ArrayList<>();
 		
 		try {
 			contexto = JAXBContext.newInstance(RepoSala.class);
 			Unmarshaller um = contexto.createUnmarshaller();
 			
 			newReposala = (RepoSala)um.unmarshal(new File(file));
+			misSalas = newReposala.list;
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
-		return newReposala;
+		return misSalas;
 	}
 
 	@Override

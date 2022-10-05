@@ -1,19 +1,20 @@
 package es.delosrios.Proyecto_chat.model.DataObject;
 
+import java.util.Objects;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import es.delosrios.Proyecto_chat.Interfaces.IUsuario;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "usuario")
-public class Usuario implements IUsuario {
+public class Usuario {
 	
-	private String Nombre;
-	private String Password;
+	private String nombre;
+	private String password;
 	private String nickName;
-	private String Desc;
+	private String desc;
 
 	public Usuario() {
 		this("", "", "", "");
@@ -21,66 +22,48 @@ public class Usuario implements IUsuario {
 
 	public Usuario(String nombre, String password, String nickName, String desc) {
 		super();
-		this.Nombre = nombre;
-		this.Password = password;
+		this.nombre = nombre;
+		this.password = password;
 		this.nickName = nickName;
-		this.Desc = desc;
+		this.desc = desc;
 	}
 
-	@Override
+
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return Nombre;
+		return nombre;
 	}
 
-	@Override
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return Password;
+		return password;
 	}
 
-	@Override
-	public String getnickName() {
-		// TODO Auto-generated method stub
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getNickName() {
 		return nickName;
 	}
 
-	@Override
-	public String getDesc() {
-		// TODO Auto-generated method stub
-		return Desc;
-	}
-
-	@Override
-	public void setNombre(String nombre) {
-		// TODO Auto-generated method stub
-		this.Nombre = nombre;
-	}
-
-	@Override
-	public void setPassword(String Passwprd) {
-		// TODO Auto-generated method stub
-		this.Password = Passwprd;
-	}
-
-	@Override
 	public void setNickName(String nickName) {
-		// TODO Auto-generated method stub
 		this.nickName = nickName;
 	}
 
-	@Override
+	public String getDesc() {
+		return desc;
+	}
+
 	public void setDesc(String desc) {
-		// TODO Auto-generated method stub
-		this.Desc = desc;
+		this.desc = desc;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nickName == null) ? 0 : nickName.hashCode());
-		return result;
+		return Objects.hash(nickName);
 	}
 
 	@Override
@@ -92,17 +75,12 @@ public class Usuario implements IUsuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (nickName == null) {
-			if (other.nickName != null)
-				return false;
-		} else if (!nickName.equals(other.nickName))
-			return false;
-		return true;
+		return Objects.equals(nickName, other.nickName);
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [Nombre=" + Nombre + ", Password=" + Password + ", nickName=" + nickName + ", Desc=" + Desc
+		return "Usuario [Nombre=" + nombre + ", Password=" + password + ", nickName=" + nickName + ", Desc=" + desc
 				+ "]";
 	}
 }

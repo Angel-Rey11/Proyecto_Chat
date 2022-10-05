@@ -14,7 +14,9 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import es.delosrios.Proyecto_chat.Interfaces.IRepoSala;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
@@ -23,8 +25,10 @@ import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RepoSala implements IRepoSala, Serializable {
 	
+	@XmlTransient
 	private static final long serialVersionUID = 1L;
 	
+	@XmlElement(name="Sala")
 	private List<Sala> list;
 	
 	public RepoSala() {
@@ -33,14 +37,10 @@ public class RepoSala implements IRepoSala, Serializable {
 
 	public boolean addSala(Sala s) {
 		boolean added = false;
-		
-		if (!list.isEmpty()) {
-			if (!list.contains(s)) {
+		if (!list.contains(s)) {
 				list.add(s);
 				added = true;
-			}
 		}
-		
 		return added;
 	}
 	
@@ -89,7 +89,7 @@ public class RepoSala implements IRepoSala, Serializable {
 		return s;
 	}
 	
-	public void marshall(RepoSala r, String file) {
+	public void marshall(String file) {
 		JAXBContext contexto;
 		BufferedWriter bfr;
 		
@@ -99,7 +99,7 @@ public class RepoSala implements IRepoSala, Serializable {
 			Marshaller m = contexto.createMarshaller();
 			
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			m.marshal(r, new File(file));
+			m.marshal(this, new File(file));
 			bfr.close();
 		} catch (JAXBException | IOException e) {
 			e.printStackTrace();
@@ -120,4 +120,11 @@ public class RepoSala implements IRepoSala, Serializable {
 		}
 		return newReposala;
 	}
+
+	@Override
+	public String toString() {
+		return "RepoSala [list=" + list + "]";
+	}
+	
+	
 }

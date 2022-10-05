@@ -35,7 +35,8 @@ public class MenuPrincipalController {
     private void addSala() {
     	Sala sala = new Sala(nombre.getText(),desc.getText());
     	rp.addSala(sala);
-    	rp.marshall(rp, "Salas.xml");
+    	System.out.println(rp);
+    	rp.marshall("Salas.xml");
     	vis.setVisible(false);
     }
     

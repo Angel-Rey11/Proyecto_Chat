@@ -11,3 +11,16 @@
 .button {
 	-fx-cursor: hand;
 }
+
+.text-field {
+    -fx-text-fill: white;
+}
+
+.text-area {
+	-fx-text-fill: white;
+}
+
+.text-area *.content {
+    -fx-background-color:  #243962;
+    -fx-border-color: skyblue;
+}

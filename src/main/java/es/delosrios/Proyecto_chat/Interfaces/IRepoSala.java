@@ -1,5 +1,7 @@
 package es.delosrios.Proyecto_chat.Interfaces;
 
+import java.util.List;
+
 import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 
@@ -10,5 +12,5 @@ public interface IRepoSala {
 	void modifyDescr(String name, String descr);
 	Sala searchSala(String name);
 	void marshall(String file);
-	RepoSala unmarshall(String file);
+	List<Sala> unmarshall(String file);
 }

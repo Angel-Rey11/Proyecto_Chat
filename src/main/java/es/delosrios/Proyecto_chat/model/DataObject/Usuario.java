@@ -1,5 +1,6 @@
 package es.delosrios.Proyecto_chat.model.DataObject;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,8 +9,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "usuario")
-public class Usuario {
+@XmlRootElement(name = "users")
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	private String nombre;
 	private String password;

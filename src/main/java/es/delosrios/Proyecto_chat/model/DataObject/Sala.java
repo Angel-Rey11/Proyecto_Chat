@@ -10,9 +10,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import es.delosrios.Proyecto_chat.Interfaces.ISala;
+
 @XmlRootElement(name = "Sala")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Sala implements Serializable {
+public class Sala implements ISala,Serializable {
 
 
 	private String nombre;
@@ -82,6 +84,31 @@ public class Sala implements Serializable {
 	public String toString() {
 		return "Sala [nombre=" + nombre + ", descr=" + descr + ", allMessagges=" + allMessagges + ", allUsers="
 				+ allUsers + "]";
+	}
+	@Override
+	public boolean addMessage(Message m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean addUser(Usuario u) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public void modifynickName(Usuario u) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void modifyPassword(Usuario u) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void modifyDesc(Usuario u) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

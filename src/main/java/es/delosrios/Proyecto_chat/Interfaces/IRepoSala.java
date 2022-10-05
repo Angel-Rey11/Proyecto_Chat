@@ -9,6 +9,6 @@ public interface IRepoSala {
 	void modifyName(String name, String newName);
 	void modifyDescr(String name, String descr);
 	Sala searchSala(String name);
-	void marshall(RepoSala s, String file);
+	void marshall(String file);
 	RepoSala unmarshall(String file);
 }

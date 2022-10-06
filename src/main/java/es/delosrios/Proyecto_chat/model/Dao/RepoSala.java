@@ -103,7 +103,7 @@ public class RepoSala implements IRepoSala, Serializable {
 			bfr = new BufferedWriter(new FileWriter(file));
 			contexto = JAXBContext.newInstance(RepoSala.class);
 			Marshaller m = contexto.createMarshaller();
-			
+			System.out.println(this.list);
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			m.marshal(this, new File(file));
 			bfr.close();
@@ -115,18 +115,18 @@ public class RepoSala implements IRepoSala, Serializable {
 	public List<Sala> unmarshall(String file) {
 		JAXBContext contexto;
 		RepoSala newReposala = null;
-		List<Sala> misSalas = new ArrayList<>();
+
 		
 		try {
 			contexto = JAXBContext.newInstance(RepoSala.class);
 			Unmarshaller um = contexto.createUnmarshaller();
 			
 			newReposala = (RepoSala)um.unmarshal(new File(file));
-			misSalas = newReposala.list;
+			this.list = newReposala.list;
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
-		return misSalas;
+		return list;
 	}
 
 	/**

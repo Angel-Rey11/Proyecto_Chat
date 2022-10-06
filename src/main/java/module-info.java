@@ -2,6 +2,8 @@ module es.delosrios.Proyecto_chat {
     requires javafx.controls;
     requires javafx.fxml;
 	requires java.xml.bind;
+	requires javafx.base;
+	requires javafx.graphics;
 
 
     opens es.delosrios.Proyecto_chat to javafx.fxml,java.xml.bind;

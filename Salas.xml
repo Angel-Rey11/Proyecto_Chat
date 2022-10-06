@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <RepoSala>
     <Sala>
-        <nombre>sd</nombre>
-        <descr>sdsd</descr>
+        <nombre>h</nombre>
+        <descr>h</descr>
+    </Sala>
+    <Sala>
+        <nombre>j</nombre>
+        <descr>j</descr>
+    </Sala>
+    <Sala>
+        <nombre>3</nombre>
+        <descr>3</descr>
+    </Sala>
+    <Sala>
+        <nombre>4</nombre>
+        <descr>4</descr>
     </Sala>
 </RepoSala>

@@ -7,10 +7,9 @@ import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 
 public interface IRepoSala {
 	boolean addSala(Sala s);
-	boolean removeSala(String name);
-	void modifyName(String name, String newName);
-	void modifyDescr(String name, String descr);
-	Sala searchSala(String name);
+	boolean removeSala(Sala s);
+	void modifyName(Sala s, String name);
+	void modifyDescr(Sala s, String desc);
 	void marshall(String file);
 	List<Sala> unmarshall(String file);
 }

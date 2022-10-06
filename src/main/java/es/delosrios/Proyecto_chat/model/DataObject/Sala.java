@@ -219,16 +219,4 @@ public class Sala implements ISala,Serializable {
 			u.setPassword(password);
 		}
 	}
-	
-	/**
-	 * Método para modificar la descripción del usuario
-	 * @param u Usuario elegido
-	 * @param desc Descripción que se va a añadir
-	 */
-	@Override
-	public void modifyDesc(Usuario u, String desc) {
-		if (allUsers.contains(u)) {
-			u.setDesc(desc);
-		}
-	}
 }

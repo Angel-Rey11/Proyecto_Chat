@@ -17,18 +17,16 @@ public class Usuario implements Serializable {
 	private String nombre;
 	private String password;
 	private String nickName;
-	private String desc;
 
 	public Usuario() {
-		this("", "", "", "");
+		this("", "", "");
 	}
 
-	public Usuario(String nombre, String password, String nickName, String desc) {
+	public Usuario(String nombre, String password, String nickName) {
 		super();
 		this.nombre = nombre;
 		this.password = password;
 		this.nickName = nickName;
-		this.desc = desc;
 	}
 
 
@@ -56,14 +54,6 @@ public class Usuario implements Serializable {
 		this.nickName = nickName;
 	}
 
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(nickName);
@@ -83,7 +73,7 @@ public class Usuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [Nombre=" + nombre + ", Password=" + password + ", nickName=" + nickName + ", Desc=" + desc
+		return "Usuario [Nombre=" + nombre + ", Password=" + password + ", nickName=" + nickName
 				+ "]";
 	}
 }

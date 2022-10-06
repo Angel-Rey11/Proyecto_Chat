@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RepoUsuario>
+    <Usuario>
+        <nombre>Angel</nombre>
+        <password>pepe</password>
+        <nickName>ANGELITO</nickName>
+    </Usuario>
+    <Usuario>
+        <nombre>Fran</nombre>
+        <password>1234</password>
+        <nickName>FranBerral</nickName>
+    </Usuario>
+    <Usuario>
+        <nombre>Fran Prados</nombre>
+        <password>4444</password>
+        <nickName>Prados45</nickName>
+    </Usuario>
+    <Usuario>
+        <nombre>Cabesa</nombre>
+        <password>1111111</password>
+        <nickName>PepeCastro</nickName>
+    </Usuario>
+    <Usuario>
+        <nombre>prueba</nombre>
+        <password>1234</password>
+        <nickName>prueba21</nickName>
+    </Usuario>
+    <Usuario>
+        <nombre>prueba2</nombre>
+        <password>33333</password>
+        <nickName>prueba2</nickName>
+    </Usuario>
+</RepoUsuario>

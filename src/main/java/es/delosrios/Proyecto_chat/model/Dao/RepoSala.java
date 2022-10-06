@@ -92,21 +92,6 @@ public class RepoSala implements IRepoSala, Serializable {
 	}
 	
 	/**
-	 * Método para buscar una sala
-	 * @param s Sala que se va a buscar
-	 * @return Sala encontrada
-	 */
-	public Sala searchSala(Sala s) {
-		Sala sala = null;
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getNombre().equals(s.getNombre())) {
-				sala = list.get(i);
-			}
-		}
-		return sala;
-	}
-	
-	/**
 	 * Método para añadir contenido al fichero XML
 	 * @param file Nombre del archivo
 	 */

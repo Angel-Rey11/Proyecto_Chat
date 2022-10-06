@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 
 import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
+import es.delosrios.Proyecto_chat.utils.DataService;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -19,6 +20,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -36,6 +38,8 @@ public class SalasController implements Initializable{
 	private TableColumn<Sala, Integer> nUsuarios;
 	@FXML
 	private TextField search;
+	@FXML
+	private Label user;
 	
 	
 	RepoSala rp = new RepoSala();
@@ -46,6 +50,7 @@ public class SalasController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		rp.unmarshall("Salas.xml");
+		user.setText(DataService.user.getNickName());
 		this.configureTabla();
 		table.setItems(FXCollections.observableArrayList(misSalas));
 		FilteredList<Sala> filteredData = new FilteredList<>(data, e -> true);
@@ -66,6 +71,17 @@ public class SalasController implements Initializable{
 			table.setItems(sortedData);
 		});
 		
+	}
+	
+	@FXML
+	public void selectSala() throws IOException {
+		Sala s = this.table.getSelectionModel().getSelectedItem();
+		DataService.sala = s;
+		App.setRoot("Chat");
+		
+		if (s == null ) {
+			System.out.println("NO");
+		}
 	}
 	
 	private void configureTabla() {

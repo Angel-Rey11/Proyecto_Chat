@@ -108,6 +108,22 @@ public class RepoUsuario implements IRepoUsuario, Serializable {
 	}
 	
 	/**
+	 * Método para validar login
+	 * @param nickName Nick para comparar
+	 * @param password Contraseña para comparar
+	 * @return Usuario encontrado
+	 */
+	public Usuario validateLogin(String nickName, String password) {
+		Usuario user = null;
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getNickName() == nickName && list.get(i).getPassword() == password) {
+				user = list.get(i);
+			}
+		}
+		return user;
+	}
+	
+	/**
 	 * Método para añadir contenido al fichero XML
 	 * @param file Nombre del archivo
 	 */

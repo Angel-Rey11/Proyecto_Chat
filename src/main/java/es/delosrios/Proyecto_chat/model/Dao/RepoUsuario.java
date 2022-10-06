@@ -71,24 +71,17 @@ public class RepoUsuario implements IRepoUsuario, Serializable {
 	}
 	
 	/**
-	 * Método para modificar el nick del usuario
+	 * Método para modificar el usuario
 	 * @param u Usuario elegido
-	 * @param nickName Nick que se va a añadir
+	 * @param que se van a modificar
 	 */
-	public void modifynickName(Usuario u, String nickName) {
-		if (list.contains(u)) {
-			u.setNickName(nickName);
-		}
-	}
-	
-	/**
-	 * Método para modificar la contraseña del usuario
-	 * @param u Usuario elegido
-	 * @param password Contraseña que se va a añadir
-	 */
-	public void modifyPassword(Usuario u, String password) {
-		if (list.contains(u)) {
-			u.setPassword(password);
+	public void modifyUser(Usuario u, String name, String password, String nickName) {
+		for (Usuario i : list) {
+	        if (i.getNickName().equalsIgnoreCase(u.getNickName())) {
+	            i.setNombre(name);
+	            i.setPassword(password);
+	            i.setNickName(nickName);
+	        }
 		}
 	}
 	
@@ -116,7 +109,7 @@ public class RepoUsuario implements IRepoUsuario, Serializable {
 	public Usuario validateLogin(String nickName, String password) {
 		Usuario user = null;
 		for(int i = 0; i < list.size(); i++) {
-			if(list.get(i).getNickName() == nickName && list.get(i).getPassword() == password) {
+			if(list.get(i).getNickName().contains(nickName) && list.get(i).getPassword().contains(password)) {
 				user = list.get(i);
 			}
 		}

@@ -10,6 +10,7 @@ import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 import es.delosrios.Proyecto_chat.model.Dao.RepoUsuario;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
+import es.delosrios.Proyecto_chat.utils.DataService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -30,28 +31,6 @@ public class MenuPrincipalController implements Initializable {
 	private TextArea desc;
 	@FXML
 	private Label salas;
-	@FXML
-	protected AnchorPane misSalas;
-	@FXML
-	protected AnchorPane historial;
-	@FXML
-	protected AnchorPane conf;
-	@FXML
-	protected AnchorPane inicio;
-	@FXML
-	private AnchorPane registro;
-	@FXML
-	private TextField nombreUser;
-	@FXML
-	private TextField nicknameUser;
-	@FXML
-	private PasswordField passwordUser;
-	@FXML
-	private TextField nicknameInicio;
-	@FXML
-	private PasswordField passwordInicio;
-	@FXML
-	private Button ini;
 	@FXML
 	private Label user;
 	
@@ -84,6 +63,11 @@ public class MenuPrincipalController implements Initializable {
     }
     
     @FXML
+    private void switchToConf() throws IOException {
+    	App.setRoot("ConfUser");
+    }
+    
+    @FXML
     private void addSala() {
     	rp.unmarshall("Salas.xml");
     	Sala sala = new Sala(nombre.getText(),desc.getText());
@@ -98,47 +82,6 @@ public class MenuPrincipalController implements Initializable {
 		rp.unmarshall("Salas.xml");
 		ru.unmarshall("Usuarios.xml");
 		nSalas();
+		user.setText(DataService.user.getNickName());
 	}
-	
-	@FXML
-	private void showRegister() {
-		registro.setVisible(true);
-		inicio.setVisible(false);
-	}
-	
-	@FXML
-	private void showInicio() {
-		inicio.setVisible(true);
-		registro.setVisible(false);
-	}
-	
-	@FXML
-	private void signIn() {
-		inicio.setVisible(false);
-		misSalas.setVisible(true);
-		conf.setVisible(true);
-		historial.setVisible(true);
-	}
-	
-	@FXML
-	private void signUp() {
-		Usuario u = new Usuario(nombreUser.getText(),passwordUser.getText(),nicknameUser.getText());
-		ru.addUsuario(u);
-		ru.marshall("Usuarios.xml");
-		user.setText(nicknameUser.getText());
-		registro.setVisible(false);
-		misSalas.setVisible(true);
-		conf.setVisible(true);
-		historial.setVisible(true);
-	}
-	
-	@FXML
-	private void ini() {
-		inicio.setVisible(false);
-		misSalas.setVisible(true);
-		conf.setVisible(true);
-		historial.setVisible(true);
-		
-	}
-    
 }

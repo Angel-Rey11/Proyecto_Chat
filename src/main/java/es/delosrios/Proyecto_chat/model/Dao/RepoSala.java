@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import es.delosrios.Proyecto_chat.Interfaces.IRepoSala;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
+import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
 
 @XmlRootElement(name = "RepoSala")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -80,6 +81,46 @@ public class RepoSala implements IRepoSala, Serializable {
 		}
 	}
 	
+	public Sala searchSala(Sala s) {
+		Sala si = null;
+		if (!list.isEmpty()) {
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).getNombre().equals(s.getNombre())) {
+					si = list.get(i);
+				}
+			}
+		}
+		return si;
+	}
+	
+	public void initArray(Sala s, Usuario u) {
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).getNombre().equals(s.getNombre())) {
+					s.getAllUsers().add(u);
+					System.out.println(s.getAllUsers());
+				} 
+			}
+	}
+	
+	
+	
+	public Sala removeUsers(Sala s, Usuario u) {
+		Sala nueva = null;
+		if (!list.isEmpty()) {
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).getNombre().equals(s.getNombre())) {
+					List<Usuario> Usuarios = new ArrayList<>();
+					Usuarios.add(u);
+					nueva = new Sala(s.getNombre(),s.getDescr(),Usuarios);
+					removeSala(s);
+					addSala(nueva);
+				}
+			}
+		}
+		return nueva;
+	}
+	
+	
 	/**
 	 * Método para modificar la descripción de la sala
 	 * @param s Sala a modificar
@@ -103,7 +144,6 @@ public class RepoSala implements IRepoSala, Serializable {
 			bfr = new BufferedWriter(new FileWriter(file));
 			contexto = JAXBContext.newInstance(RepoSala.class);
 			Marshaller m = contexto.createMarshaller();
-			System.out.println(this.list);
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			m.marshal(this, new File(file));
 			bfr.close();

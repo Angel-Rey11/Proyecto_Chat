@@ -5,4 +5,9 @@
         <password>1234</password>
         <nickName>ANGELITO22</nickName>
     </Usuario>
+    <Usuario>
+        <nombre>carlos</nombre>
+        <password>carlos</password>
+        <nickName>CARLOS</nickName>
+    </Usuario>
 </RepoUsuario>

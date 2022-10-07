@@ -8,6 +8,8 @@ import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import es.delosrios.Proyecto_chat.Interfaces.ISala;
@@ -57,6 +59,13 @@ public class Sala implements ISala,Serializable {
 		this.allUsers = AllUsers;
 	}
 	
+	public Sala(String nombre, String descr, List<Usuario> allUsers) {
+		super();
+		this.nombre = nombre;
+		this.descr = descr;
+		this.allUsers = allUsers;
+	}
+
 	/**
 	 * Constructor que recibe dos parámetros
 	 * @param nombre Nombre de la sala
@@ -194,6 +203,15 @@ public class Sala implements ISala,Serializable {
 			
 		}
 		return added;
+	}
+	
+	public boolean removeUser(Usuario u) {
+		boolean remove = false;
+		if (allUsers.contains(u)) {
+				allUsers.remove(u);
+				remove = true;
+		}
+		return remove;
 	}
 	
 	/**

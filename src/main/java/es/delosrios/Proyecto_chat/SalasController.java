@@ -77,11 +77,18 @@ public class SalasController implements Initializable{
 	public void selectSala() throws IOException {
 		Sala s = this.table.getSelectionModel().getSelectedItem();
 		DataService.sala = s;
+		//s está correctamente actualizado con el nuevo usuario gracias a la siguiente línea
+		//pero estás guardando en xml una array de salas, cuya sala que equivale a esta no está siendo modificada
+		//por lo que estás guardando lo mismo que tenías.
+		rp.initArray(rp.searchSala(s),DataService.user);
+		DataService.sala = rp.searchSala(s);
+		/**
+		 *  ¿Por qué?
+		 *  porque debes ahora entrar en rp, buscar la sala en su lista que equivale a esta y hacer lo mismo, es decir, meter el puñetero usuario y
+		 *  luego ya sí puiedes escribir en el xml
+		 */
+		rp.marshall("Salas.xml");
 		App.setRoot("Chat");
-		
-		if (s == null ) {
-			System.out.println("NO");
-		}
 	}
 	
 	private void configureTabla() {

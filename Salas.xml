@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <RepoSala>
     <Sala>
-        <nombre>h</nombre>
-        <descr>h</descr>
-    </Sala>
-    <Sala>
-        <nombre>j</nombre>
-        <descr>j</descr>
-    </Sala>
-    <Sala>
-        <nombre>3</nombre>
-        <descr>3</descr>
-    </Sala>
-    <Sala>
-        <nombre>4</nombre>
+        <allUsers>
+            <nombre>carlos</nombre>
+            <password>carlos</password>
+            <nickName>CARLOS</nickName>
+        </allUsers>
+        <allUsers>
+            <nombre>ANGELITO</nombre>
+            <password>1234</password>
+            <nickName>ANGELITO22</nickName>
+        </allUsers>
         <descr>4</descr>
+        <nombre>4</nombre>
+    </Sala>
+    <Sala>
+        <allUsers>
+            <nombre>carlos</nombre>
+            <password>carlos</password>
+            <nickName>CARLOS</nickName>
+        </allUsers>
+        <allUsers>
+            <nombre>ANGELITO</nombre>
+            <password>1234</password>
+            <nickName>ANGELITO22</nickName>
+        </allUsers>
+        <descr>uu</descr>
+        <nombre>uu</nombre>
+    </Sala>
+    <Sala>
+        <allUsers>
+            <nombre>carlos</nombre>
+            <password>carlos</password>
+            <nickName>CARLOS</nickName>
+        </allUsers>
+        <allUsers>
+            <nombre>ANGELITO</nombre>
+            <password>1234</password>
+            <nickName>ANGELITO22</nickName>
+        </allUsers>
+        <descr>00</descr>
+        <nombre>00</nombre>
     </Sala>
 </RepoSala>

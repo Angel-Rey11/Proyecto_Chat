@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import es.delosrios.Proyecto_chat.model.Dao.RepoUsuario;
 import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
 import es.delosrios.Proyecto_chat.utils.DataService;
+import es.delosrios.Proyecto_chat.utils.Dialog;
+import es.delosrios.Proyecto_chat.utils.Loggers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -50,14 +52,21 @@ public class ConfUserController implements Initializable{
 		ru.unmarshall("Usuarios.xml");
 		String pass = newPassword.getText();
 		String passN = newConfirm.getText();
-		if (pass.contentEquals(passN)) {
-			ru.modifyUser(u, newName.getText(), newPassword.getText(), newNickName.getText());
-			Usuario act = new Usuario (newName.getText(), newPassword.getText(), newNickName.getText());
-			DataService.user = act;
-			ru.marshall("Usuarios.xml");
-			App.setRoot("MenuPrincipal");
+		if (!pass.isEmpty() && !passN.isEmpty() && !newName.getText().isEmpty()) {
+			if (pass.contentEquals(passN)) {
+				ru.modifyUser(u, newName.getText(), newPassword.getText(), newNickName.getText());
+				Usuario act = new Usuario (newName.getText(), newPassword.getText(), newNickName.getText());
+				DataService.user = act;
+				ru.marshall("Usuarios.xml");
+				Dialog.showConfirm("OPERACIÓN EXITOSA", "CAMBIOS REALIZADOS CON ÉXITO", "LA CONTRASEÑA HA SIDO MODIFICADA CORRECTAMENTE");
+				App.setRoot("MenuPrincipal");
+			} else {
+				Dialog.showError("ERROR", "CAMBIO DE CONTRASEÑA NO VÁLIDO", "LOS CAMPOS DEBEN COINCIDIR PARA APLICAR LOS CAMBIOS");
+				Loggers.LogsSevere("NO SE PUDO CAMBIAR CONTRASEÑA. LOS CAMPOS NO COINCIDEN");
+			}
 		} else {
-			System.out.println("NO");
+			Dialog.showError("ERROR", "FALLO AL INTRODUCIR DATOS", "TODOS LOS CAMPOS DEBEN SER COMPLETADOS");
+			Loggers.LogsSevere("TODOS LOS CAMPOS DEBEN SER COMPLETADOS");
 		}
 	}
 }

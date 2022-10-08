@@ -1,11 +1,13 @@
 package es.delosrios.Proyecto_chat.model.DataObject;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
+import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import es.delosrios.Proyecto_chat.utils.Adapter;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -14,35 +16,36 @@ public class Message implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String nickName;
-	private LocalDateTime time;
+	private String nickname;
+	@XmlJavaTypeAdapter(value = Adapter.class)
+	private LocalDate time;
 	private String text;
 
 	public Message() {
 		
 	}
 
-	public Message(String nickName, LocalDateTime time, String text) {
+	public Message(String nickname, LocalDate time, String text) {
 		super();
-		this.nickName = nickName;
+		this.nickname = nickname;
 		this.time = time;
 		this.text = text;
 	}
-	
 
-	public String getNickName() {
-		return nickName;
+
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
-	public LocalDateTime getTime() {
+	public LocalDate getTime() {
 		return time;
 	}
 
-	public void setTime(LocalDateTime time) {
+	public void setTime(LocalDate time) {
 		this.time = time;
 	}
 
@@ -56,6 +59,6 @@ public class Message implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Message [nickName=" + nickName + ", Time=" + time + ", Text=" + text + "]";
+		return "Message [nickName=" + nickname + ", Time=" + time + ", Text=" + text + "]";
 	}
 }

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.xml.sax.XMLReader;
+
 import es.delosrios.Proyecto_chat.model.Dao.RepoUsuario;
 import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
 import es.delosrios.Proyecto_chat.utils.DataService;
@@ -33,6 +35,8 @@ public class ConfUserController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		XMLReader.class.getResourceAsStream("Salas.xml");
+		XMLReader.class.getResourceAsStream("Usuarios.xml");
 		ru.unmarshall("Usuarios.xml");
 		user.setText(DataService.user.getNickName());
 		newName.setText(DataService.user.getNombre());

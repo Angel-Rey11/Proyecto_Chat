@@ -2,6 +2,7 @@ package es.delosrios.Proyecto_chat.model.Dao;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
@@ -163,15 +164,21 @@ public class RepoSala implements IRepoSala, Serializable {
 	public List<Sala> unmarshall(String file) {
 		JAXBContext contexto;
 		RepoSala newReposala = null;
+		
 
 		
 		try {
+			FileReader f = new FileReader(file);
 			contexto = JAXBContext.newInstance(RepoSala.class);
 			Unmarshaller um = contexto.createUnmarshaller();
 			
-			newReposala = (RepoSala)um.unmarshal(new File(file));
+			newReposala = (RepoSala)um.unmarshal(f);
 			this.list = newReposala.list;
+			f.close();
 		} catch (JAXBException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;

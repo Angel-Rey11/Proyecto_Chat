@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.xml.sax.XMLReader;
 
@@ -16,6 +18,7 @@ import es.delosrios.Proyecto_chat.model.DataObject.Message;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
 import es.delosrios.Proyecto_chat.utils.DataService;
+import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -89,7 +92,6 @@ public class ChatController implements Initializable{
 		s.marshall("Salas.xml");
 		mensaje.clear();
 		initialize(null,null);
-		App.setRoot("Chat2");
 	}
 	
 	@Override
@@ -104,6 +106,16 @@ public class ChatController implements Initializable{
 		user.setText(DataService.user.getNickName());
 		nombreS.setText(DataService.sala.getNombre());
 		nUsuarios.setText(String.valueOf(DataService.sala.getAllUsers().size()));
+		Platform.runLater(()->{
+			Timer timer = new Timer(true);
+	           timer.scheduleAtFixedRate(new TimerTask() {
+	               @Override
+	               public void run() {
+	            	   s.unmarshall("Salas.xml");
+	            	   chat.refresh();
+	               }
+	           },100,100);
+		});
 	}
 	
 	@FXML

@@ -1,11 +1,18 @@
 package es.delosrios.Proyecto_chat.model.DataObject;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,6 +20,7 @@ import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import es.delosrios.Proyecto_chat.Interfaces.ISala;
+import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 
 @XmlRootElement(name = "Sala")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -237,4 +245,5 @@ public class Sala implements ISala,Serializable {
 			u.setPassword(password);
 		}
 	}
+	
 }

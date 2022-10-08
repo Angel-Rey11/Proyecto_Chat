@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -58,7 +60,7 @@
          <children>
             <AnchorPane fx:id="ap" layoutX="22.0" layoutY="10.0" prefHeight="463.0" prefWidth="549.0" style="-fx-background-color: #243962; -fx-background-radius: 50px; -fx-border-color: skyblue; -fx-border-radius: 50px;">
                <children>
-                  <TextField layoutX="81.0" layoutY="383.0" prefHeight="44.0" prefWidth="388.0" style="-fx-background-radius: 50px; -fx-background-color: #2c2723; -fx-border-color: skyblue; -fx-border-radius: 20px;" />
+                  <TextField fx:id="mensaje" layoutX="81.0" layoutY="383.0" prefHeight="44.0" prefWidth="388.0" style="-fx-background-radius: 50px; -fx-background-color: #2c2723; -fx-border-color: skyblue; -fx-border-radius: 20px;" />
                   <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="36.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/paperclip.png" />
@@ -75,6 +77,14 @@
                   <Button layoutX="411.0" layoutY="11.0" mnemonicParsing="false" onAction="#outSala" prefHeight="16.0" prefWidth="100.0" style="-fx-background-color: skyblue; -fx-border-color: #243962; -fx-background-radius: 30px; -fx-border-radius: 50px;" text="Salir de la sala" />
                   <Label layoutX="210.0" layoutY="17.0" style="-fx-font-size: 14px;" text="Conectados:" />
                   <Label fx:id="nUsuarios" layoutX="296.0" layoutY="17.0" prefHeight="16.0" prefWidth="16.0" style="-fx-font-size: 14px;" text="4" />
+                  <TableView fx:id="chat" layoutX="1.0" layoutY="50.0" prefHeight="328.0" prefWidth="547.0" style="-fx-background-color: #243962;">
+                    <columns>
+                      <TableColumn fx:id="hora" prefWidth="95.33334350585938" text="Hora" />
+                      <TableColumn fx:id="texto" prefWidth="242.6666717529297" text="Mensaje" />
+                        <TableColumn fx:id="nickname" prefWidth="99.33334350585938" text="Usuario" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="482.0" layoutY="383.0" mnemonicParsing="false" onAction="#sendMessage" opacity="0.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: #243962;" />
                </children>
             </AnchorPane>
          </children></AnchorPane>

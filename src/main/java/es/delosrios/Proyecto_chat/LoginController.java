@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.xml.sax.XMLReader;
+
 import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 import es.delosrios.Proyecto_chat.model.Dao.RepoUsuario;
 import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
@@ -87,8 +89,10 @@ public class LoginController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		rp.unmarshall("Salas.xml");
+		XMLReader.class.getResourceAsStream("Salas.xml");
+		XMLReader.class.getResourceAsStream("Usuarios.xml");
 		ru.unmarshall("Usuarios.xml");
+		rp.unmarshall("Salas.xml");
 		
 	}
 }

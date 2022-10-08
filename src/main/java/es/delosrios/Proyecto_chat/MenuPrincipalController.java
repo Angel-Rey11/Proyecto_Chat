@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.xml.sax.XMLReader;
+
 import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 import es.delosrios.Proyecto_chat.model.Dao.RepoUsuario;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
@@ -75,10 +77,13 @@ public class MenuPrincipalController implements Initializable {
     	rp.marshall("Salas.xml");
     	vis.setVisible(false);
     	nSalas();
+    	initialize(null,null);
     }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		XMLReader.class.getResourceAsStream("Salas.xml");
+		XMLReader.class.getResourceAsStream("Usuarios.xml");
 		rp.unmarshall("Salas.xml");
 		ru.unmarshall("Usuarios.xml");
 		nSalas();

@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import es.delosrios.Proyecto_chat.Interfaces.IRepoSala;
+import es.delosrios.Proyecto_chat.model.DataObject.Message;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
 
@@ -97,9 +98,16 @@ public class RepoSala implements IRepoSala, Serializable {
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).getNombre().equals(s.getNombre())) {
 					s.getAllUsers().add(u);
-					System.out.println(s.getAllUsers());
 				} 
 			}
+	}
+	
+	public void initArrayMessages(Sala s, Message m) {
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getNombre().equals(s.getNombre())) {
+				s.getAllMessagges().add(m);
+			}
+		}
 	}
 	
 	

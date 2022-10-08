@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
+import org.xml.sax.XMLReader;
+
 import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 import es.delosrios.Proyecto_chat.utils.DataService;
@@ -44,15 +46,16 @@ public class SalasController implements Initializable{
 	
 	RepoSala rp = new RepoSala();
 	
-	private List<Sala> misSalas = (List<Sala>) rp.unmarshall("Salas.xml");
-	private final ObservableList<Sala> data = FXCollections.observableArrayList(misSalas);
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		List<Sala> misSalas = (List<Sala>) rp.unmarshall("Salas.xml");
+		ObservableList<Sala> data = FXCollections.observableArrayList(misSalas);
+		XMLReader.class.getResourceAsStream("Salas.xml");
+		XMLReader.class.getResourceAsStream("Usuarios.xml");
 		rp.unmarshall("Salas.xml");
 		user.setText(DataService.user.getNickName());
 		this.configureTabla();
-		table.setItems(FXCollections.observableArrayList(misSalas));
+		table.setItems(FXCollections.observableArrayList(data));
 		FilteredList<Sala> filteredData = new FilteredList<>(data, e -> true);
 		search.setOnKeyReleased(e -> {
 			search.textProperty().addListener((observableValue, oldValue, newValue) -> {

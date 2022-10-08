@@ -5,12 +5,13 @@ module es.delosrios.Proyecto_chat {
 	requires java.xml;
 	requires javafx.base;
 	requires javafx.graphics;
+	requires transitive java.desktop;
 	requires java.logging;
 
 
     opens es.delosrios.Proyecto_chat to javafx.fxml,java.xml.bind;
     opens es.delosrios.Proyecto_chat.model.Dao to java.xml.bind,javafx.fxml;
     opens es.delosrios.Proyecto_chat.model.DataObject;
-    opens es.delosrios.Proyecto_chat.utils to java.xml.bind;
+    opens es.delosrios.Proyecto_chat.utils;
     exports es.delosrios.Proyecto_chat;
 }

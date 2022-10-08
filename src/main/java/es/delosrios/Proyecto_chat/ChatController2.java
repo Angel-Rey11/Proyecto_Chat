@@ -3,7 +3,6 @@ package es.delosrios.Proyecto_chat;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -13,13 +12,8 @@ import org.xml.sax.XMLReader;
 import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 import es.delosrios.Proyecto_chat.model.Dao.RepoUsuario;
 import es.delosrios.Proyecto_chat.model.DataObject.Message;
-import es.delosrios.Proyecto_chat.model.DataObject.Sala;
-import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
 import es.delosrios.Proyecto_chat.utils.DataService;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,7 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class ChatController implements Initializable{
+public class ChatController2 implements Initializable{
 	
 	@FXML
 	private AnchorPane ap;
@@ -41,6 +35,8 @@ public class ChatController implements Initializable{
 	@FXML
 	private Label nUsuarios;
 	@FXML
+	private TextField mensaje;
+	@FXML
 	private TableView<Message> chat;
 	@FXML
 	private TableColumn<Message, String> texto;
@@ -48,17 +44,21 @@ public class ChatController implements Initializable{
 	private TableColumn<Message, String> nickname;
 	@FXML
 	private TableColumn<Message, String> hora;
-	@FXML
-	private TextField mensaje;
 	
 	RepoSala s = new RepoSala();
 	RepoUsuario r = new RepoUsuario();
-
+	
 	@FXML
-    private void switchToMenuPrincipal()  throws IOException {
+	private void sendMessage() throws IOException {
 		s.unmarshall("Salas.xml");
-    	App.setRoot("MenuPrincipal");
-    }
+		Message m = new Message(DataService.user.getNickName(),LocalDate.now(),mensaje.getText());
+		DataService.sala = s.searchSala(DataService.sala);
+		s.initArrayMessages(s.searchSala(DataService.sala), m);
+		s.marshall("Salas.xml");
+		mensaje.clear();
+		initialize(null,null);
+		App.setRoot("Chat");
+	}
 	
 	private void configureTabla() {
 		texto.setCellValueFactory(mensaje -> {
@@ -80,18 +80,6 @@ public class ChatController implements Initializable{
 		});
 	}
 	
-	@FXML
-	private void sendMessage() throws IOException {
-		s.unmarshall("Salas.xml");
-		Message m = new Message(DataService.user.getNickName(),LocalDate.now(),mensaje.getText());
-		DataService.sala = s.searchSala(DataService.sala);
-		s.initArrayMessages(s.searchSala(DataService.sala), m);
-		s.marshall("Salas.xml");
-		mensaje.clear();
-		initialize(null,null);
-		App.setRoot("Chat2");
-	}
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		s.unmarshall("Salas.xml");
@@ -106,9 +94,4 @@ public class ChatController implements Initializable{
 		nUsuarios.setText(String.valueOf(DataService.sala.getAllUsers().size()));
 	}
 	
-	@FXML
-	public void outSala() throws IOException {
-		DataService.sala.removeUser(DataService.user);
-		s.searchSala(DataService.sala);
-	}
 }

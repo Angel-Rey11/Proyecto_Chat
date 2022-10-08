@@ -56,6 +56,9 @@ public class ChatController implements Initializable{
 	
 	RepoSala s = new RepoSala();
 	RepoUsuario r = new RepoUsuario();
+	
+	private ObservableList<Message> ob;
+	private List<Message> misMensajes;
 
 	@FXML
     private void switchToMenuPrincipal()  throws IOException {
@@ -91,7 +94,6 @@ public class ChatController implements Initializable{
 		s.initArrayMessages(s.searchSala(DataService.sala), m);
 		s.marshall("Salas.xml");
 		mensaje.clear();
-		initialize(null,null);
 	}
 	
 	@Override
@@ -99,10 +101,10 @@ public class ChatController implements Initializable{
 		s.unmarshall("Salas.xml");
 		XMLReader.class.getResourceAsStream("Salas.xml");
 		XMLReader.class.getResourceAsStream("Usuarios.xml");
-		List<Message> misMensajes = DataService.sala.getAllMessagges();
-		ObservableList<Message> ob = FXCollections.observableArrayList(misMensajes);
+		misMensajes = DataService.sala.getAllMessagges();
+		ob = FXCollections.observableArrayList(misMensajes);
+		chat.setItems(ob);
 		this.configureTabla();
-		chat.setItems(FXCollections.observableArrayList(ob));
 		user.setText(DataService.user.getNickName());
 		nombreS.setText(DataService.sala.getNombre());
 		nUsuarios.setText(String.valueOf(DataService.sala.getAllUsers().size()));
@@ -111,10 +113,18 @@ public class ChatController implements Initializable{
 	           timer.scheduleAtFixedRate(new TimerTask() {
 	               @Override
 	               public void run() {
-	            	   s.unmarshall("Salas.xml");
-	            	   chat.refresh();
+	            	   List<Sala> misSalas = s.unmarshall("Salas.xml");
+	            	   Sala s1 = null;
+	            	   for (Sala s : misSalas) {
+	            		   if (s.getNombre().equals(DataService.sala.getNombre())) {
+	            			   s1 = s;
+	            		   }
+	            	   }
+	            	   ob.removeAll(ob);
+	            	   misMensajes = s1.getAllMessagges();
+	           		   ob.addAll(misMensajes);
 	               }
-	           },100,100);
+	           },500,500);
 		});
 	}
 	

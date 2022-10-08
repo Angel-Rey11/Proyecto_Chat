@@ -91,7 +91,7 @@ public class SalasController implements Initializable{
 		 *  luego ya sí puiedes escribir en el xml
 		 */
 		rp.marshall("Salas.xml");
-		App.setRoot("Chat");
+		App.setRoot("Chat2");
 	}
 	
 	private void configureTabla() {

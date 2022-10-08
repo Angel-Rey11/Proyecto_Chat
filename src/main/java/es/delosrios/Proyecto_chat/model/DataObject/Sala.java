@@ -246,4 +246,19 @@ public class Sala implements ISala,Serializable {
 		}
 	}
 	
+	public Sala unmarshallMessages (String file, Sala si) {
+		JAXBContext contexto;
+		Sala s = null;
+			try {
+				contexto = JAXBContext.newInstance(Sala.class);
+				Unmarshaller um = contexto.createUnmarshaller();
+				s = (Sala) um.unmarshal(new File(file));
+				s = si;
+			} catch (JAXBException e) {
+				e.printStackTrace();
+			}
+			
+		return si;
+	}
+	
 }

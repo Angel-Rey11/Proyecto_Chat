@@ -83,6 +83,11 @@ public class RepoSala implements IRepoSala, Serializable {
 		}
 	}
 	
+	/**
+	 * Metodo para buscar una sala en concreto
+	 * @param s sala que vamos a buscar en la lista de salas
+	 * @return una sala con todos sus atributos del array de salas
+	 */
 	public Sala searchSala(Sala s) {
 		Sala si = null;
 		if (!list.isEmpty()) {
@@ -95,6 +100,11 @@ public class RepoSala implements IRepoSala, Serializable {
 		return si;
 	}
 	
+	/**
+	 * Metodo para inicializar o meter usuarios en el array de usuarios de una sala en conreto
+	 * @param u usuario que vamos a introducir
+	 * @param s sala en donde vamos a introducir ese usuario
+	 */
 	public void initArray(Sala s, Usuario u) {
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).getNombre().equals(s.getNombre())) {
@@ -110,13 +120,18 @@ public class RepoSala implements IRepoSala, Serializable {
 	public boolean existSala(Sala s) {
 		boolean result = false;
 		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getNombre().contains(s.getNombre())) {
+			if (list.get(i).getNombre().equals(s.getNombre())) {
 				result = true;
 			}
 		}
 		return result;
 	}
 	
+	/**
+	 * Metodo para inicializar o meter mensajes en el array de mensajes de una sala en concreto
+	 * @param s sala donde meteremos los mensajes
+	 * @para m mensaje que introduciremos en el array de la sala
+	 */
 	public void initArrayMessages(Sala s, Message m) {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getNombre().equals(s.getNombre())) {
@@ -124,8 +139,6 @@ public class RepoSala implements IRepoSala, Serializable {
 			}
 		}
 	}
-	
-	
 	
 	public Sala removeUsers(Sala s, Usuario u) {
 		Sala nueva = null;
@@ -175,6 +188,10 @@ public class RepoSala implements IRepoSala, Serializable {
 		}
 	}
 	
+	/**
+	 * Metodo para cargar contenido del fichero xml
+	 * @param file nombre del archivo
+	 */
 	public List<Sala> unmarshall(String file) {
 		JAXBContext contexto;
 		RepoSala newReposala = null;
@@ -204,7 +221,6 @@ public class RepoSala implements IRepoSala, Serializable {
 	@Override
 	public String toString() {
 		return "RepoSala [list=" + list + "]";
-	}
-	
+	}	
 	
 }

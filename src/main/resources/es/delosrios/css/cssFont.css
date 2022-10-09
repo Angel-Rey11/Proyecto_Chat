@@ -24,3 +24,12 @@
     -fx-background-color:  #243962;
     -fx-border-color: skyblue;
 }
+
+.menu-item {
+    -fx-background-color:  #243962;
+    -fx-font-size: 14px;
+}
+
+.menu-item:focused {
+     -fx-background-color: skyblue;
+}

@@ -42,8 +42,6 @@ public class ChatController implements Initializable{
 	@FXML
 	private Label nombreS;
 	@FXML
-	private Label nUsuarios;
-	@FXML
 	private TableView<Message> chat;
 	@FXML
 	private TableColumn<Message, String> texto;
@@ -54,7 +52,7 @@ public class ChatController implements Initializable{
 	@FXML
 	private TextField mensaje;
 	
-	RepoSala s = new RepoSala();
+	RepoSala srp = new RepoSala();
 	RepoUsuario r = new RepoUsuario();
 	
 	private ObservableList<Message> ob;
@@ -62,7 +60,7 @@ public class ChatController implements Initializable{
 
 	@FXML
     private void switchToMenuPrincipal()  throws IOException {
-		s.unmarshall("Salas.xml");
+		srp.unmarshall("Salas.xml");
     	App.setRoot("MenuPrincipal");
     }
 	
@@ -88,17 +86,17 @@ public class ChatController implements Initializable{
 	
 	@FXML
 	private void sendMessage() throws IOException {
-		s.unmarshall("Salas.xml");
+		srp.unmarshall("Salas.xml");
 		Message m = new Message(DataService.user.getNickName(),LocalDate.now(),mensaje.getText());
-		DataService.sala = s.searchSala(DataService.sala);
-		s.initArrayMessages(s.searchSala(DataService.sala), m);
-		s.marshall("Salas.xml");
+		DataService.sala = srp.searchSala(DataService.sala);
+		srp.initArrayMessages(srp.searchSala(DataService.sala), m);
+		srp.marshall("Salas.xml");
 		mensaje.clear();
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		s.unmarshall("Salas.xml");
+		srp.unmarshall("Salas.xml");
 		XMLReader.class.getResourceAsStream("Salas.xml");
 		XMLReader.class.getResourceAsStream("Usuarios.xml");
 		misMensajes = DataService.sala.getAllMessagges();
@@ -107,13 +105,12 @@ public class ChatController implements Initializable{
 		this.configureTabla();
 		user.setText(DataService.user.getNickName());
 		nombreS.setText(DataService.sala.getNombre());
-		nUsuarios.setText(String.valueOf(DataService.sala.getAllUsers().size()));
 		Platform.runLater(()->{
 			Timer timer = new Timer(true);
 	           timer.scheduleAtFixedRate(new TimerTask() {
 	               @Override
 	               public void run() {
-	            	   List<Sala> misSalas = s.unmarshall("Salas.xml");
+	            	   List<Sala> misSalas = srp.unmarshall("Salas.xml");
 	            	   Sala s1 = null;
 	            	   for (Sala s : misSalas) {
 	            		   if (s.getNombre().equals(DataService.sala.getNombre())) {
@@ -130,7 +127,15 @@ public class ChatController implements Initializable{
 	
 	@FXML
 	public void outSala() throws IOException {
-		DataService.sala.removeUser(DataService.user);
-		s.searchSala(DataService.sala);
+		List<Sala> misSalas = srp.unmarshall("Salas.xml");
+		Sala s1 = null;
+		for (Sala s : misSalas) {
+ 		   if (s.getNombre().equals(DataService.sala.getNombre())) {
+ 			   	s1 = s;
+ 			   	s.removeArray(s1, DataService.user);
+ 			   	srp.marshall("Salas.xml");
+ 				App.setRoot("MenuPrincipal");
+ 		   }
+ 	   }
 	}
 }

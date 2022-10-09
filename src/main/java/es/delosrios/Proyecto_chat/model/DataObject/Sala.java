@@ -242,4 +242,12 @@ public class Sala implements ISala,Serializable {
 		return check;
 	}
 	
+	public void removeArray(Sala s, Usuario u) {
+		for (int i = 0; i < allUsers.size(); i++) {
+			if (allUsers.get(i).getNombre().equals(u.getNombre())) {
+				s.getAllUsers().remove(u);
+			} 
+		}
+	}
+	
 }

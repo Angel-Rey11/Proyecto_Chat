@@ -10,14 +10,4 @@
         <password>1</password>
         <nickName>1</nickName>
     </Usuario>
-    <Usuario>
-        <nombre>eee</nombre>
-        <password>ee</password>
-        <nickName>ee</nickName>
-    </Usuario>
-    <Usuario>
-        <nombre>4</nombre>
-        <password>4</password>
-        <nickName>4</nickName>
-    </Usuario>
 </RepoUsuario>

@@ -94,6 +94,15 @@ public class SalasController implements Initializable{
 		
 	}
 	
+	@FXML
+	public void deleteSala() {
+		Sala s = this.table.getSelectionModel().getSelectedItem();
+		DataService.sala = s;
+		rp.removeSala(s);
+		rp.marshall("Salas.xml");
+		initialize(null,null);
+	}
+	
 	private void configureTabla() {
 		nombre.setCellValueFactory(sala -> {
 			SimpleStringProperty ssp = new SimpleStringProperty();

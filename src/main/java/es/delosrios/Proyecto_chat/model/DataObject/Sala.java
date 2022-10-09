@@ -1,16 +1,22 @@
 package es.delosrios.Proyecto_chat.model.DataObject;
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import es.delosrios.Proyecto_chat.Interfaces.ISala;
 
 @XmlRootElement(name = "Sala")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Sala implements ISala,Serializable {
+/**
+ * Clase Sala
+ * @author Francisco José Berral, Francisco Prados, Ángel Manuel Rey
+ */
+public class Sala implements ISala {
 
 	/**
 	 * Nombre de la sala
@@ -199,6 +205,11 @@ public class Sala implements ISala,Serializable {
 		return added;
 	}
 	
+	/**
+	 * Método para eliminar un usuario
+	 * @param u Usuario que se va a eliminar
+	 */
+	@Override
 	public boolean removeUser(Usuario u) {
 		boolean remove = false;
 		if (allUsers.contains(u)) {
@@ -232,6 +243,11 @@ public class Sala implements ISala,Serializable {
 		}
 	}
 	
+	/**
+	 * Método para comprobar si un usuario existe en la lista
+	 * @param u Usuario a comprobar
+	 */
+	@Override
 	public boolean checkUser(Usuario u) {
 		boolean check = false;
 		for (int i = 0; i < allUsers.size(); i++) {
@@ -241,5 +257,4 @@ public class Sala implements ISala,Serializable {
 		}
 		return check;
 	}
-	
 }

@@ -1,5 +1,6 @@
 package es.delosrios.Proyecto_chat.model.DataObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +17,7 @@ import es.delosrios.Proyecto_chat.Interfaces.ISala;
  * Clase Sala
  * @author Francisco José Berral, Francisco Prados, Ángel Manuel Rey
  */
-public class Sala implements ISala {
+public class Sala implements ISala, Serializable {
 
 	/**
 	 * Nombre de la sala
@@ -257,4 +258,14 @@ public class Sala implements ISala {
 		}
 		return check;
 	}
+	
+	
+	public void removeArray(Sala s, Usuario u) {
+		for(int i = 0; i < allUsers.size(); i++) {
+			if(allUsers.get(i).getNombre().equals(u.getNombre())) {
+				s.getAllUsers().remove(u);
+			}
+		}
+	}
+	
 }

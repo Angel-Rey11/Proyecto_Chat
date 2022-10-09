@@ -60,6 +60,8 @@ public class MenuPrincipalController implements Initializable {
 	    	rp.addSala(sala);
 	    	Dialog.showConfirm("OPERACIÓN EXITOSA", "SALA CREADA", "SE HA CREADO LA NUEVA CORRECTAMENTE");
 	    	rp.marshall("Salas.xml");
+	    	nombre.clear();
+    		desc.clear();
 	    	vis.setVisible(false);
 	    	initialize(null,null);
     	} else {

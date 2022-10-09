@@ -199,6 +199,10 @@ public class Sala implements ISala,Serializable {
 		return added;
 	}
 	
+	/**
+	 * Metodo para eliminar un usuario de la lista
+	 * @param u usuario que se elimina de la lista
+	 */
 	public boolean removeUser(Usuario u) {
 		boolean remove = false;
 		if (allUsers.contains(u)) {
@@ -232,6 +236,12 @@ public class Sala implements ISala,Serializable {
 		}
 	}
 	
+	/**
+	 * Metodo para chequear que el usuario ya está introducido en una sala
+	 * si ya está introducido no se vuelve a introducir
+	 * @param u usuario que se chequea en la lista de salas
+	 * @param return true si ya está metido en la sala, false si aun no esta y tiene que ser añadido
+	 */
 	public boolean checkUser(Usuario u) {
 		boolean check = false;
 		for (int i = 0; i < allUsers.size(); i++) {
@@ -242,6 +252,11 @@ public class Sala implements ISala,Serializable {
 		return check;
 	}
 	
+	/**
+	 * Metodo para eliminar un usuario de una sala en concreto y sacarlo del array de usuarios
+	 * @param u usuario que se elimina de la sala
+	 * @param s sala de la que se elimina el usuario
+	 */
 	public void removeArray(Sala s, Usuario u) {
 		for (int i = 0; i < allUsers.size(); i++) {
 			if (allUsers.get(i).getNombre().equals(u.getNombre())) {

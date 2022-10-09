@@ -58,10 +58,14 @@ public class LoginController implements Initializable{
 		Usuario aux = ru.validateLogin(nickname, password);
 		if (nickname.isEmpty() || password.isEmpty()) {
 			Dialog.showError("ERROR", "FALLO AL INTRODUCIR DATOS", "TODOS LOS CAMPOS DEBEN SER COMPLETADOS");
+			nicknameInicio.clear();
+			passwordInicio.clear();
 			Loggers.LogsSevere("TODOS LOS CAMPOS DEBEN SER COMPLETADOS");
 		} else {
 			if (aux == null) {
 				Dialog.showError("ERROR", "USUARIO NO ENCONTRADO", "EL USUARIO INTRODUCIDO NO EXISTE");
+				nicknameInicio.clear();
+				passwordInicio.clear();
 				Loggers.LogsSevere("EL USUARIO INTRODUCIDO NO ES VÁLIDO");
 			} else {
 				DataService.user=aux;
@@ -80,6 +84,9 @@ public class LoginController implements Initializable{
 				ru.addUsuario(u);
 				ru.marshall("Usuarios.xml");
 				Dialog.showConfirm("OPERACIÓN EXITOSA", "USUARIO CREADO", "SE HA CREADO EL NUEVO USUARIO CORRECTAMENTE");
+				nombreUser.clear();
+				passwordUser.clear();
+				nicknameUser.clear();
 				registro.setVisible(false);
 				inicio.setVisible(true);
 			} else {

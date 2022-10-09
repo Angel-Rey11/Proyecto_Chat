@@ -117,6 +117,20 @@ public class RepoUsuario implements IRepoUsuario, Serializable {
 	}
 	
 	/**
+	 * Método para comprobar si un usuario existe en la lista
+	 * @param user Usuario a buscar
+	 */
+	public boolean existUser(Usuario user) {
+		boolean result = false;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getNickName().contains(user.getNickName())) {
+				result = true;
+			}
+		}
+		return result;
+	}
+	
+	/**
 	 * Método para añadir contenido al fichero XML
 	 * @param file Nombre del archivo
 	 */

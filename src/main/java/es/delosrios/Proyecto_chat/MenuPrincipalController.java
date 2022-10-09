@@ -13,6 +13,8 @@ import es.delosrios.Proyecto_chat.model.Dao.RepoUsuario;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 import es.delosrios.Proyecto_chat.model.DataObject.Usuario;
 import es.delosrios.Proyecto_chat.utils.DataService;
+import es.delosrios.Proyecto_chat.utils.Dialog;
+import es.delosrios.Proyecto_chat.utils.Loggers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -73,12 +75,22 @@ public class MenuPrincipalController implements Initializable {
     private void addSala() {
     	rp.unmarshall("Salas.xml");
     	Sala sala = new Sala(nombre.getText(),desc.getText());
-    	rp.addSala(sala);
-    	rp.marshall("Salas.xml");
-    	vis.setVisible(false);
-    	nSalas();
-    	initialize(null,null);
+    	if (!rp.existSala(sala)) {
+	    	rp.addSala(sala);
+	    	Dialog.showConfirm("OPERACIÓN EXITOSA", "SALA CREADA", "SE HA CREADO LA NUEVA CORRECTAMENTE");
+	    	rp.marshall("Salas.xml");
+	    	vis.setVisible(false);
+	    	nSalas();
+	    	initialize(null,null);
+    	} else {
+    		Dialog.showError("ERROR", "SALA EXISTENTE", "NO SE PUEDE CREAR LA SALA. SALA EXISTENTE");
+    		nombre.clear();
+    		desc.clear();
+    		Loggers.LogsSevere("LA SALA YA EXISTE");
+    	}
     }
+    
+    
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

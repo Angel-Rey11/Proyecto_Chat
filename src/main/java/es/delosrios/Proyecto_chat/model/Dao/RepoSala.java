@@ -103,6 +103,20 @@ public class RepoSala implements IRepoSala, Serializable {
 			}
 	}
 	
+	/**
+	 * Método para comprobar si una sala existe en la lista
+	 * @param s Sala a buscar
+	 */
+	public boolean existSala(Sala s) {
+		boolean result = false;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getNombre().contains(s.getNombre())) {
+				result = true;
+			}
+		}
+		return result;
+	}
+	
 	public void initArrayMessages(Sala s, Message m) {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getNombre().equals(s.getNombre())) {

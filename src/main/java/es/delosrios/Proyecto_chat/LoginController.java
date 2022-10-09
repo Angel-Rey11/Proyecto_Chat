@@ -76,13 +76,24 @@ public class LoginController implements Initializable{
 	private void signUp() {
 		if (!nombreUser.getText().isEmpty() && !passwordUser.getText().isEmpty() && !nicknameUser.getText().isEmpty()) {
 			Usuario u = new Usuario(nombreUser.getText(),passwordUser.getText(),nicknameUser.getText());
-			ru.addUsuario(u);
-			ru.marshall("Usuarios.xml");
-			Dialog.showConfirm("OPERACIÓN EXITOSA", "USUARIO CREADO", "SE HA CREADO EL NUEVO USUARIO CORRECTAMENTE");
-			registro.setVisible(false);
-			inicio.setVisible(true);
+			if (!ru.existUser(u)){
+				ru.addUsuario(u);
+				ru.marshall("Usuarios.xml");
+				Dialog.showConfirm("OPERACIÓN EXITOSA", "USUARIO CREADO", "SE HA CREADO EL NUEVO USUARIO CORRECTAMENTE");
+				registro.setVisible(false);
+				inicio.setVisible(true);
+			} else {
+				Dialog.showError("ERROR", "USUARIO EXISTENTE", "NO SE PUEDE REGISTRAR. EL USUARIO YA EXISTE");
+				nombreUser.clear();
+				passwordUser.clear();
+				nicknameUser.clear();
+				Loggers.LogsSevere("EL USUARIO YA EXISTE");
+			}
 		} else {
 			Dialog.showError("ERROR", "FALLO AL CREAR USUARIO", "TODOS LOS CAMPOS DEBEN SER COMPLETADOS");
+			nombreUser.clear();
+			passwordUser.clear();
+			nicknameUser.clear();
 			Loggers.LogsSevere("FALTAN CAMPOS POR RELLENAR");
 		}
 	}

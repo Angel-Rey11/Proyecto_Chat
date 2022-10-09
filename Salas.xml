@@ -54,4 +54,13 @@
             <nickName>CARLOS</nickName>
         </allUsers>
     </Sala>
+    <Sala>
+        <nombre>2</nombre>
+        <descr>2</descr>
+        <allUsers>
+            <nombre>1</nombre>
+            <password>1</password>
+            <nickName>1</nickName>
+        </allUsers>
+    </Sala>
 </RepoSala>

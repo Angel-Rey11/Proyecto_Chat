@@ -36,22 +36,37 @@ public class MenuPrincipalController implements Initializable {
 	RepoSala rp = new RepoSala();
 	RepoUsuario ru = new RepoUsuario();
 	
+	/**
+	 * Método para cambiar de escena
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
     @FXML
     private void switchToSalas()  throws IOException {
     	App.setRoot("Salas");
     	
     }
     
+    /**
+     * Método para visualizar escena
+     * @throws IOException Lanza posibles errores que puedan aparecer
+     */
     @FXML
     private void showSala() throws IOException {
     	vis.setVisible(true);
     }
     
+    /**
+     * Método para cambiar de escena
+     * @throws IOException Lanza posibles errores que puedan aparecer
+     */
     @FXML
     private void switchToConf() throws IOException {
     	App.setRoot("ConfUser");
     }
     
+    /**
+     * Método para controlar la creación de una sala
+     */
     @FXML
     private void addSala() {
     	rp.unmarshall("Salas.xml");
@@ -72,12 +87,20 @@ public class MenuPrincipalController implements Initializable {
     	}
     }
     
+    /**
+     * Método para desconectarse de la sala
+     * @throws IOException Lanza posibles errores que puedan aparecer
+     */
     @FXML
     private void logOut() throws IOException {
     	DataService.user = null;
     	App.setRoot("Login");
     }
     
+    /**
+     * Método para eliminar usuario
+     * @throws IOException
+     */
     @FXML
     private void deleteUser() throws IOException {
     	List<Usuario> misUsuarios = ru.unmarshall("Usuarios.xml");
@@ -91,8 +114,9 @@ public class MenuPrincipalController implements Initializable {
     	}
     }
     
-    
-
+    /**
+     * Método con funcionalidades del programa
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLReader.class.getResourceAsStream("Salas.xml");

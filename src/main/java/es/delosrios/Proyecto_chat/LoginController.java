@@ -38,19 +38,28 @@ public class LoginController implements Initializable{
 	@FXML
 	private PasswordField passwordInicio;
 	
-	
+	/**
+	 * Método para superponer escena y hacer invisible la anterior
+	 */
 	@FXML
 	private void showRegister() {
 		registro.setVisible(true);
 		inicio.setVisible(false);
 	}
 	
+	/**
+	 * Método para superponer escena y hacer invisible la anterior
+	 */
 	@FXML
 	private void showInicio() {
 		inicio.setVisible(true);
 		registro.setVisible(false);
 	}
 	
+	/**
+	 * Método que permite controlar el acceso al programa de un usuario
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
 	private void signIn() throws IOException {
 		String nickname = nicknameInicio.getText();
@@ -76,6 +85,9 @@ public class LoginController implements Initializable{
 		}
 	}
 	
+	/**
+	 * Método que permite controlar el registro de un usuario
+	 */
 	@FXML
 	private void signUp() {
 		if (!nombreUser.getText().isEmpty() && !passwordUser.getText().isEmpty() && !nicknameUser.getText().isEmpty()) {
@@ -105,6 +117,9 @@ public class LoginController implements Initializable{
 		}
 	}
 
+	/**
+     * Método con funcionalidades del programa
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLReader.class.getResourceAsStream("Salas.xml");

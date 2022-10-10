@@ -32,7 +32,9 @@ public class ConfUserController implements Initializable{
 	RepoUsuario ru = new RepoUsuario();
 	Usuario u = DataService.user;
 	
-
+	/**
+     * Método con funcionalidades del programa
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLReader.class.getResourceAsStream("Salas.xml");
@@ -46,11 +48,19 @@ public class ConfUserController implements Initializable{
 		
 	}
 	
+	/**
+	 * Método para cambiar de escena
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
     private void switchToMenuPrincipal() throws IOException {
     	App.setRoot("MenuPrincipal");
     }
 	
+	/**
+	 * Método para controlar el seteo de campos de un usuario
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
 	private void modifyUser() throws IOException {
 		ru.unmarshall("Usuarios.xml");

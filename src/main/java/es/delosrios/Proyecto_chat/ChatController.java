@@ -157,9 +157,9 @@ public class ChatController implements Initializable{
  		   if (s.getNombre().equals(DataService.sala.getNombre())) {
  			   	s1 = s;
  			   	s.removeArray(s1, DataService.user);
+ 				srp.marshall("Salas.xml");
  			   	Dialog.showConfirm("OPERACIÓN EXITOSA", "ABANDONO DE SALA", "HAS SALIDO DE LA SALA");
  			   	Loggers.LogsInfo("HAS SALIDO DE LA SALA");
- 			   	srp.marshall("Salas.xml");
  			   	App.setRoot("MenuPrincipal");
  		   }
  	   }

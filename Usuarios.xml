@@ -10,4 +10,9 @@
         <password>1</password>
         <nickName>1</nickName>
     </Usuario>
+    <Usuario>
+        <nombre>2</nombre>
+        <password>2</password>
+        <nickName>2</nickName>
+    </Usuario>
 </RepoUsuario>

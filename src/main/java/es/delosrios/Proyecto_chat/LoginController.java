@@ -14,6 +14,7 @@ import es.delosrios.Proyecto_chat.utils.Dialog;
 import es.delosrios.Proyecto_chat.utils.Loggers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -37,6 +38,8 @@ public class LoginController implements Initializable{
 	private TextField nicknameInicio;
 	@FXML
 	private PasswordField passwordInicio;
+	@FXML
+	private Button signin;
 	
 	/**
 	 * Método para superponer escena y hacer invisible la anterior
@@ -124,6 +127,7 @@ public class LoginController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		XMLReader.class.getResourceAsStream("Salas.xml");
 		XMLReader.class.getResourceAsStream("Usuarios.xml");
+		signin.setDefaultButton(true);
 		ru.unmarshall("Usuarios.xml");
 		rp.unmarshall("Salas.xml");
 		

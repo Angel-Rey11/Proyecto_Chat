@@ -47,6 +47,9 @@ public class SalasController implements Initializable{
 	RepoSala rp = new RepoSala();
 	Sala s = new Sala();
 	
+	/**
+     * Método con funcionalidades del programa
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		List<Sala> misSalas = (List<Sala>) rp.unmarshall("Salas.xml");
@@ -77,6 +80,10 @@ public class SalasController implements Initializable{
 		
 	}
 	
+	/**
+	 * Método que selecciona la sala de una tabla y permite controlar que se añada en función de si esta existe o no
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
 	public void selectSala() throws IOException {
 		Sala s = this.table.getSelectionModel().getSelectedItem();
@@ -94,6 +101,9 @@ public class SalasController implements Initializable{
 		
 	}
 	
+	/**
+	 * Método para eliminar sala seleccionada en una tabla
+	 */
 	@FXML
 	public void deleteSala() {
 		Sala s = this.table.getSelectionModel().getSelectedItem();
@@ -103,6 +113,9 @@ public class SalasController implements Initializable{
 		initialize(null,null);
 	}
 	
+	/**
+	 * Método para setear valores en las celdas de la tabla
+	 */
 	private void configureTabla() {
 		nombre.setCellValueFactory(sala -> {
 			SimpleStringProperty ssp = new SimpleStringProperty();
@@ -122,11 +135,18 @@ public class SalasController implements Initializable{
 		});
 	}
 	
+	/**
+	 * Método para cambiar de escena
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
     private void switchToMenuPrincipal() throws IOException {
     	App.setRoot("MenuPrincipal");
     }
-	
+	/**
+	 * Método para cambiar de escena
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
 	private void switchToChat() throws IOException {
 		App.setRoot("Chat");

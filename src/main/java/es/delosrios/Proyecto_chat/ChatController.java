@@ -53,12 +53,19 @@ public class ChatController implements Initializable{
 	private ObservableList<Message> ob;
 	private List<Message> misMensajes;
 
+	/**
+	 * Método para cambiar de escena
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
     private void switchToMenuPrincipal()  throws IOException {
 		srp.unmarshall("Salas.xml");
     	App.setRoot("MenuPrincipal");
     }
 	
+	/**
+	 * Método para setear valores en las celdas de la tabla
+	 */
 	private void configureTabla() {
 		texto.setCellValueFactory(mensaje -> {
 			SimpleStringProperty ssp = new SimpleStringProperty();
@@ -79,6 +86,10 @@ public class ChatController implements Initializable{
 		});
 	}
 	
+	/**
+	 * Método para enviar mensaje
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
 	private void sendMessage() throws IOException {
 		srp.unmarshall("Salas.xml");
@@ -89,6 +100,9 @@ public class ChatController implements Initializable{
 		mensaje.clear();
 	}
 	
+	/**
+     * Método con funcionalidades del programa
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		srp.unmarshall("Salas.xml");
@@ -120,6 +134,10 @@ public class ChatController implements Initializable{
 		});
 	}
 	
+	/**
+	 * Método para sacar al usuario de la sala
+	 * @throws IOException Lanza posibles errores que puedan aparecer
+	 */
 	@FXML
 	public void outSala() throws IOException {
 		List<Sala> misSalas = srp.unmarshall("Salas.xml");

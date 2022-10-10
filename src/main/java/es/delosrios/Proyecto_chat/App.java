@@ -15,6 +15,9 @@ public class App extends Application {
 
     private static Scene scene;
 
+    /**
+     * Método para iniciar escena
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("Login"), 720, 550);
@@ -22,6 +25,11 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * Método para cambiar de ventana
+     * @param fxml Nombre de la ventana a cambiar
+     * @throws IOException Lanza posibles errores que puedan aparecer
+     */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -31,6 +39,10 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    /**
+     * Método que ejecuta el programa
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }

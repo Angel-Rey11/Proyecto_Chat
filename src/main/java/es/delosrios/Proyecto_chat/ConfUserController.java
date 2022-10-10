@@ -73,6 +73,7 @@ public class ConfUserController implements Initializable{
 				DataService.user = act;
 				ru.marshall("Usuarios.xml");
 				Dialog.showConfirm("OPERACIÓN EXITOSA", "CAMBIOS REALIZADOS CON ÉXITO", "LA CONTRASEÑA HA SIDO MODIFICADA CORRECTAMENTE");
+				Loggers.LogsInfo("CONTRASEÑA MODIFICADA");
 				App.setRoot("MenuPrincipal");
 			} else {
 				Dialog.showError("ERROR", "CAMBIO DE CONTRASEÑA NO VÁLIDO", "LOS CAMPOS DEBEN COINCIDIR PARA APLICAR LOS CAMBIOS");

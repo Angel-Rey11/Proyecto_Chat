@@ -12,6 +12,8 @@ import org.xml.sax.XMLReader;
 import es.delosrios.Proyecto_chat.model.Dao.RepoSala;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 import es.delosrios.Proyecto_chat.utils.DataService;
+import es.delosrios.Proyecto_chat.utils.Dialog;
+import es.delosrios.Proyecto_chat.utils.Loggers;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -111,6 +113,8 @@ public class SalasController implements Initializable{
 		rp.removeSala(s);
 		rp.marshall("Salas.xml");
 		initialize(null,null);
+		Dialog.showConfirm("OPERACIÓN EXITOSA", "SALA BORRADA", "LA SALA HA SIDO ELIMINADA");
+		Loggers.LogsInfo("SALA ELIMINADA");
 	}
 	
 	/**

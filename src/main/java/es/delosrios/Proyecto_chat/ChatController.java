@@ -16,6 +16,8 @@ import es.delosrios.Proyecto_chat.model.Dao.RepoUsuario;
 import es.delosrios.Proyecto_chat.model.DataObject.Message;
 import es.delosrios.Proyecto_chat.model.DataObject.Sala;
 import es.delosrios.Proyecto_chat.utils.DataService;
+import es.delosrios.Proyecto_chat.utils.Dialog;
+import es.delosrios.Proyecto_chat.utils.Loggers;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -101,6 +103,7 @@ public class ChatController implements Initializable{
 		Message m = new Message(DataService.user.getNickName(),LocalDate.now(),mensaje.getText());
 		DataService.sala = srp.searchSala(DataService.sala);
 		srp.initArrayMessages(srp.searchSala(DataService.sala), m);
+		Loggers.LogsInfo("MENSAJE ENVIADO");
 		srp.marshall("Salas.xml");
 		mensaje.clear();
 	}
@@ -154,8 +157,10 @@ public class ChatController implements Initializable{
  		   if (s.getNombre().equals(DataService.sala.getNombre())) {
  			   	s1 = s;
  			   	s.removeArray(s1, DataService.user);
+ 			   	Dialog.showConfirm("OPERACIÓN EXITOSA", "ABANDONO DE SALA", "HAS SALIDO DE LA SALA");
+ 			   	Loggers.LogsInfo("HAS SALIDO DE LA SALA");
  			   	srp.marshall("Salas.xml");
- 				App.setRoot("MenuPrincipal");
+ 			   	App.setRoot("MenuPrincipal");
  		   }
  	   }
 	}

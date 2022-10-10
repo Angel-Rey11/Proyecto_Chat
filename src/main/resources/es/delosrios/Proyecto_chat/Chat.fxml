@@ -56,9 +56,9 @@
                   <Button layoutX="411.0" layoutY="11.0" mnemonicParsing="false" onAction="#outSala" prefHeight="16.0" prefWidth="100.0" style="-fx-background-color: skyblue; -fx-border-color: #243962; -fx-background-radius: 30px; -fx-border-radius: 50px;" text="Salir de la sala" />
                   <TableView fx:id="chat" layoutX="1.0" layoutY="50.0" prefHeight="328.0" prefWidth="547.0" style="-fx-background-color: #243962;">
                     <columns>
-                      <TableColumn fx:id="hora" prefWidth="95.33334350585938" text="Hora" />
-                      <TableColumn fx:id="texto" prefWidth="242.6666717529297" text="Mensaje" />
-                        <TableColumn fx:id="nickname" prefWidth="99.33334350585938" text="Usuario" />
+                      <TableColumn fx:id="hora" prefWidth="136.00003051757812" />
+                      <TableColumn fx:id="texto" prefWidth="213.33331298828125" />
+                        <TableColumn fx:id="nickname" prefWidth="198.00006103515625" />
                     </columns>
                   </TableView>
                   <Button fx:id="send" defaultButton="true" layoutX="482.0" layoutY="383.0" mnemonicParsing="false" onAction="#sendMessage" opacity="0.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: #243962;" />

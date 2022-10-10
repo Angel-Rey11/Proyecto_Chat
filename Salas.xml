@@ -1,47 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <RepoSala>
     <Sala>
-        <nombre>prueba </nombre>
-        <descr>prueba</descr>
+        <nombre>pepe</nombre>
+        <descr>ee</descr>
         <allMessagges>
             <nickname>1</nickname>
+            <time>2022-10-10</time>
+            <text>rtretrtrt</text>
+        </allMessagges>
+        <allMessagges>
+            <nickname>CARLOS</nickname>
+            <time>2022-10-10</time>
+            <text>wdwafwf</text>
+        </allMessagges>
+        <allMessagges>
+            <nickname>CARLOS</nickname>
             <time>2022-10-10</time>
             <text>hola</text>
         </allMessagges>
         <allMessagges>
-            <nickname>CARLOS</nickname>
-            <time>2022-10-10</time>
-            <text>que tal estas</text>
-        </allMessagges>
-        <allMessagges>
             <nickname>1</nickname>
             <time>2022-10-10</time>
-            <text>todo bien y tu</text>
+            <text>que tal estamos</text>
         </allMessagges>
-        <allMessagges>
-            <nickname>CARLOS</nickname>
-            <time>2022-10-10</time>
-            <text>todo bien, adios</text>
-        </allMessagges>
-        <allMessagges>
-            <nickname>1</nickname>
-            <time>2022-10-10</time>
-            <text>adios</text>
-        </allMessagges>
-        <allMessagges>
-            <nickname>1</nickname>
-            <time>2022-10-10</time>
-            <text>wewe</text>
-        </allMessagges>
-        <allUsers>
-            <nombre>1</nombre>
-            <password>1</password>
-            <nickName>1</nickName>
-        </allUsers>
         <allUsers>
             <nombre>carlos</nombre>
             <password>carlos</password>
             <nickName>CARLOS</nickName>
+        </allUsers>
+        <allUsers>
+            <nombre>1</nombre>
+            <password>1</password>
+            <nickName>1</nickName>
         </allUsers>
     </Sala>
 </RepoSala>

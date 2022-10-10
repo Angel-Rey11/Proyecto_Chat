@@ -89,7 +89,7 @@
                               <TextField fx:id="nombre" layoutX="29.0" layoutY="56.0" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #243962; -fx-border-color: skyblue;" />
                               <Label layoutX="29.0" layoutY="92.0" style="-fx-font-size: 16px;" text="DESCRIPCIÓN" />
                               <TextArea fx:id="desc" layoutX="29.0" layoutY="122.0" prefHeight="87.0" prefWidth="313.0" />
-                              <Button layoutX="262.0" layoutY="26.0" mnemonicParsing="false" onAction="#addSala" style="-fx-background-color: #33353c; -fx-font-size: 14px; -fx-background-radius: 20px; -fx-border-color: skyblue; -fx-border-radius: 20px;" text="CREAR SALA" textFill="WHITE" />
+                              <Button fx:id="addSala" defaultButton="true" layoutX="262.0" layoutY="26.0" mnemonicParsing="false" onAction="#addSala" style="-fx-background-color: #33353c; -fx-font-size: 14px; -fx-background-radius: 20px; -fx-border-color: skyblue; -fx-border-radius: 20px;" text="CREAR SALA" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                       </header>

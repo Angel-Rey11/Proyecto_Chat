@@ -22,6 +22,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -46,6 +47,10 @@ public class ChatController implements Initializable{
 	private TableColumn<Message, String> hora;
 	@FXML
 	private TextField mensaje;
+	@FXML
+	private Label nUsuarios;
+	@FXML
+	private Button send;
 	
 	RepoSala srp = new RepoSala();
 	RepoUsuario r = new RepoUsuario();
@@ -105,9 +110,11 @@ public class ChatController implements Initializable{
      */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		send.setDefaultButton(true);
 		srp.unmarshall("Salas.xml");
 		XMLReader.class.getResourceAsStream("Salas.xml");
 		XMLReader.class.getResourceAsStream("Usuarios.xml");
+		nUsuarios.setText(String.valueOf(DataService.sala.getAllUsers().size()));
 		misMensajes = DataService.sala.getAllMessagges();
 		ob = FXCollections.observableArrayList(misMensajes);
 		chat.setItems(ob);
@@ -124,6 +131,7 @@ public class ChatController implements Initializable{
 	            	   for (Sala s : misSalas) {
 	            		   if (s.getNombre().equals(DataService.sala.getNombre())) {
 	            			   s1 = s;
+	            			   
 	            		   }
 	            	   }
 	            	   ob.removeAll(ob);

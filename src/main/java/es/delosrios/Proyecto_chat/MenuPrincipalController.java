@@ -16,6 +16,7 @@ import es.delosrios.Proyecto_chat.utils.Dialog;
 import es.delosrios.Proyecto_chat.utils.Loggers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -31,6 +32,8 @@ public class MenuPrincipalController implements Initializable {
 	private TextArea desc;
 	@FXML
 	private Label user;
+	@FXML
+	private Button addSala;
 	
 	
 	RepoSala rp = new RepoSala();
@@ -119,6 +122,7 @@ public class MenuPrincipalController implements Initializable {
      */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		addSala.setDefaultButton(true);
 		XMLReader.class.getResourceAsStream("Salas.xml");
 		XMLReader.class.getResourceAsStream("Usuarios.xml");
 		rp.unmarshall("Salas.xml");

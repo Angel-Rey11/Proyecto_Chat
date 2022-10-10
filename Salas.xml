@@ -1,36 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <RepoSala>
     <Sala>
-        <nombre>2</nombre>
-        <descr>2</descr>
+        <nombre>pepe</nombre>
+        <descr>ee</descr>
         <allMessagges>
             <nickname>1</nickname>
-            <time>2022-10-09</time>
-            <text>ewe</text>
+            <time>2022-10-10</time>
+            <text>rtretrtrt</text>
         </allMessagges>
-    </Sala>
-    <Sala>
-        <nombre>new</nombre>
-        <descr>new</descr>
-        <allMessagges>
-            <nickname>1</nickname>
-            <time>2022-10-09</time>
-            <text>hola</text>
-        </allMessagges>
-        <allMessagges>
-            <nickname>CARLOS</nickname>
-            <time>2022-10-09</time>
-            <text>qeu tal estas</text>
-        </allMessagges>
-        <allMessagges>
-            <nickname>1</nickname>
-            <time>2022-10-09</time>
-            <text>bien y tu</text>
-        </allMessagges>
-        <allUsers>
-            <nombre>1</nombre>
-            <password>1</password>
-            <nickName>1</nickName>
-        </allUsers>
     </Sala>
 </RepoSala>

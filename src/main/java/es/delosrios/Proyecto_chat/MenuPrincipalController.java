@@ -73,20 +73,26 @@ public class MenuPrincipalController implements Initializable {
     @FXML
     private void addSala() {
     	rp.unmarshall("Salas.xml");
-    	Sala sala = new Sala(nombre.getText(),desc.getText());
-    	if (!rp.existSala(sala)) {
-	    	rp.addSala(sala);
-	    	Dialog.showConfirm("OPERACIÓN EXITOSA", "SALA CREADA", "SE HA CREADO LA NUEVA CORRECTAMENTE");
-	    	rp.marshall("Salas.xml");
-	    	nombre.clear();
-    		desc.clear();
-	    	vis.setVisible(false);
-	    	initialize(null,null);
+    	if (!nombre.getText().isEmpty() && !desc.getText().isEmpty()){
+    		Sala sala = new Sala(nombre.getText(),desc.getText());
+	    	if (!rp.existSala(sala)) {
+		    	rp.addSala(sala);
+		    	Dialog.showConfirm("OPERACIÓN EXITOSA", "SALA CREADA", "SE HA CREADO LA NUEVA SALA CORRECTAMENTE");
+		    	Loggers.LogsInfo("SALA CREADA");
+		    	rp.marshall("Salas.xml");
+		    	nombre.clear();
+	    		desc.clear();
+		    	vis.setVisible(false);
+		    	initialize(null,null);
+	    	} else {
+	    		Dialog.showError("ERROR", "SALA EXISTENTE", "NO SE PUEDE CREAR LA SALA. SALA EXISTENTE");
+	    		nombre.clear();
+	    		desc.clear();
+	    		Loggers.LogsSevere("LA SALA YA EXISTE");
+	    	}
     	} else {
-    		Dialog.showError("ERROR", "SALA EXISTENTE", "NO SE PUEDE CREAR LA SALA. SALA EXISTENTE");
-    		nombre.clear();
-    		desc.clear();
-    		Loggers.LogsSevere("LA SALA YA EXISTE");
+    		Dialog.showError("ERROR", "CAMPOS VACÍOS", "LOS CAMPOS DEBEN SER COMPLETADOS");
+    		Loggers.LogsSevere("LOS CAMPOS DEBEN SER COMPLETADOS");
     	}
     }
     
@@ -98,6 +104,8 @@ public class MenuPrincipalController implements Initializable {
     private void logOut() throws IOException {
     	DataService.user = null;
     	App.setRoot("Login");
+    	Dialog.showConfirm("OPERACIÓN EXITOSA", "SESIÓN CERRADA", "HAS CERRADO SESIÓN. NOS VEMOS PRONTO");
+    	Loggers.LogsInfo("HAS CERRADO SESIÓN");
     }
     
     /**
@@ -113,6 +121,8 @@ public class MenuPrincipalController implements Initializable {
     			DataService.user = null;
     			ru.marshall("Usuarios.xml");
     			App.setRoot("Login");
+    			Dialog.showConfirm("OPERACIÓN EXITOSA", "CUENTA ELIMINADA", "HAS ELIMINADO TU CUENTA");
+    	    	Loggers.LogsInfo("HAS ELIMINADO TU CUENTA");
     		}
     	}
     }

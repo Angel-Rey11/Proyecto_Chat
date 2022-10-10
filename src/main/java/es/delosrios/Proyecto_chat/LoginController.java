@@ -83,6 +83,7 @@ public class LoginController implements Initializable{
 				DataService.user=aux;
 				inicio.setVisible(false);
 				Dialog.showConfirm("OPERACIÓN EXITOSA", "ACCESO PERMITIDO", "BIENVENIDO");
+				Loggers.LogsInfo("ACCESO PERMITIDO");
 				App.setRoot("MenuPrincipal");
 			}
 		}
@@ -99,6 +100,7 @@ public class LoginController implements Initializable{
 				ru.addUsuario(u);
 				ru.marshall("Usuarios.xml");
 				Dialog.showConfirm("OPERACIÓN EXITOSA", "USUARIO CREADO", "SE HA CREADO EL NUEVO USUARIO CORRECTAMENTE");
+				Loggers.LogsInfo("USUARIO CREADO CORRECTAMENTE");
 				nombreUser.clear();
 				passwordUser.clear();
 				nicknameUser.clear();
